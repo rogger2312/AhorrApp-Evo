@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="34bd288e250144dfab06f7f80e05d030" Name="Diagram1">
+        <EntityTypeShape EntityType="EvoDBModel.Categoria" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Empresa" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Flujo" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Flujo_Fijo" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Local" Width="1.5" PointX="3.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Oferta" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Producto" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Producto_Favorito" Width="1.5" PointX="11.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Promocion" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Tips_Financieros" Width="1.5" PointX="2.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Ubicacion_de_Negocio_Pequeño" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Usuario" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EvoDBModel.Zona" Width="1.5" PointX="1.5" PointY="16.5" IsExpanded="true" />
+        <AssociationConnector Association="EvoDBModel.FK_Flujo_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Producto_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Local_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Flujo_Ubicacion_de_Negocio_Pequeño" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Flujo_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Flujo_Fijo_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Local_Zona" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Producto_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Promocion_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Oferta_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Oferta_Promocion" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Producto_Favorito_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="EvoDBModel.FK_Producto_Favorito_usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

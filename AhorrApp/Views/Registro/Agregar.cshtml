@@ -1,0 +1,110 @@
+﻿@model AhorrApp.ViewModel.UsuarioViewModel
+@{
+    ViewBag.Title = "Agregar";
+    Layout = null;
+}
+
+
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" method="post" action="@Url.Action("Agregar", "Registro")">
+                @Html.HiddenFor(x => x.usuarioId)
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.nombre, new { @class = "col-md-3 col-xs-12 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.nombre, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.apellidopaterno, new { @class = "col-md-3 col-xs-12 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    @Html.TextBoxFor(x => x.apellidopaterno, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.apellidopaterno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.apellidomaterno, new { @class = "col-md-3 col-xs-12 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    @Html.TextBoxFor(x => x.apellidomaterno, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.apellidomaterno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.DNI, new { @class = "col-md-3 col-xs-12 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    @Html.TextBoxFor(x => x.DNI, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.DNI, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.celular, new { @class = "col-md-3 col-xs-12 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    @Html.TextBoxFor(x => x.celular, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.celular, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.edad, new { @class = "col-md-3 col-xs-12 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    @Html.TextBoxFor(x => x.edad, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.edad, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.login, new { @class = "col-md-3 col-xs-12 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    @Html.TextBoxFor(x => x.login, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.login, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.password, new { @class = "col-md-3 col-xs-12 control-label" })
+                            <div class="col-md-6 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    @Html.TextBoxFor(x => x.password, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-primary pull-right">Guardar Docente</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>

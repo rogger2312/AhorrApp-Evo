@@ -1,0 +1,920 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EvoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="categoriaid" />
+          </Key>
+          <Property Name="categoriaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="empresaid" />
+          </Key>
+          <Property Name="empresaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="razonsocial" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RUC" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="telefono" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="paginaweb" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flujo">
+          <Key>
+            <PropertyRef Name="flujoid" />
+          </Key>
+          <Property Name="flujoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuarioid" Type="int" Nullable="false" />
+          <Property Name="monto" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="fechainicio" Type="datetime" Nullable="false" />
+          <Property Name="fechafin" Type="datetime" Nullable="false" />
+          <Property Name="categoriaid" Type="int" Nullable="false" />
+          <Property Name="negocioid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flujo Fijo">
+          <Key>
+            <PropertyRef Name="flujofijoid" />
+          </Key>
+          <Property Name="flujofijoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuarioid" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gasto" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="fechainicio" Type="datetime" Nullable="false" />
+          <Property Name="fechafin" Type="datetime" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Local">
+          <Key>
+            <PropertyRef Name="localid" />
+          </Key>
+          <Property Name="localid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empresaid" Type="int" Nullable="false" />
+          <Property Name="zonaid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Oferta">
+          <Key>
+            <PropertyRef Name="ofertaid" />
+          </Key>
+          <Property Name="ofertaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productoid" Type="int" Nullable="false" />
+          <Property Name="promocionid" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="descuento" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="monto" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="productoid" />
+          </Key>
+          <Property Name="productoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="localid" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="precio" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="categoriaid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto_Favorito">
+          <Key>
+            <PropertyRef Name="productofavoritoid" />
+          </Key>
+          <Property Name="productofavoritoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productoid" Type="int" Nullable="false" />
+          <Property Name="usuarioid" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Promocion">
+          <Key>
+            <PropertyRef Name="promocionid" />
+          </Key>
+          <Property Name="promocionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="localid" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fechainicio" Type="datetime" Nullable="false" />
+          <Property Name="fechafin" Type="datetime" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tips Financieros">
+          <Key>
+            <PropertyRef Name="tipsid" />
+          </Key>
+          <Property Name="tipsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ubicacion de Negocio Pequeño">
+          <Key>
+            <PropertyRef Name="negocioid" />
+          </Key>
+          <Property Name="negocioid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="distrito" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usuarioid" />
+          </Key>
+          <Property Name="usuarioid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidopaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidomaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DNI" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="celular" Type="char" MaxLength="9" Nullable="false" />
+          <Property Name="edad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zona">
+          <Key>
+            <PropertyRef Name="zonaid" />
+          </Key>
+          <Property Name="zonaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="distrito" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="departamento" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Flujo Fijo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Flujo Fijo" Type="Self.Flujo Fijo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usuarioid" />
+            </Principal>
+            <Dependent Role="Flujo Fijo">
+              <PropertyRef Name="usuarioid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flujo_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Flujo" Type="Self.Flujo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="categoriaid" />
+            </Principal>
+            <Dependent Role="Flujo">
+              <PropertyRef Name="categoriaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flujo_Ubicacion de Negocio Pequeño">
+          <End Role="Ubicacion de Negocio Pequeño" Type="Self.Ubicacion de Negocio Pequeño" Multiplicity="1" />
+          <End Role="Flujo" Type="Self.Flujo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion de Negocio Pequeño">
+              <PropertyRef Name="negocioid" />
+            </Principal>
+            <Dependent Role="Flujo">
+              <PropertyRef Name="negocioid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flujo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Flujo" Type="Self.Flujo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usuarioid" />
+            </Principal>
+            <Dependent Role="Flujo">
+              <PropertyRef Name="usuarioid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Local_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="empresaid" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="empresaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Local_Zona">
+          <End Role="Zona" Type="Self.Zona" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zona">
+              <PropertyRef Name="zonaid" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="zonaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oferta_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="productoid" />
+            </Principal>
+            <Dependent Role="Oferta">
+              <PropertyRef Name="productoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oferta_Promocion">
+          <End Role="Promocion" Type="Self.Promocion" Multiplicity="1" />
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promocion">
+              <PropertyRef Name="promocionid" />
+            </Principal>
+            <Dependent Role="Oferta">
+              <PropertyRef Name="promocionid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="categoriaid" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="categoriaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Favorito_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Producto_Favorito" Type="Self.Producto_Favorito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="productoid" />
+            </Principal>
+            <Dependent Role="Producto_Favorito">
+              <PropertyRef Name="productoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Favorito_usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Producto_Favorito" Type="Self.Producto_Favorito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usuarioid" />
+            </Principal>
+            <Dependent Role="Producto_Favorito">
+              <PropertyRef Name="usuarioid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="localid" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="localid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promocion_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="Promocion" Type="Self.Promocion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="localid" />
+            </Principal>
+            <Dependent Role="Promocion">
+              <PropertyRef Name="localid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EvoDBModelStoreContainer">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flujo" EntityType="Self.Flujo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flujo Fijo" EntityType="Self.Flujo Fijo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Local" EntityType="Self.Local" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oferta" EntityType="Self.Oferta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto_Favorito" EntityType="Self.Producto_Favorito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promocion" EntityType="Self.Promocion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tips Financieros" EntityType="Self.Tips Financieros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ubicacion de Negocio Pequeño" EntityType="Self.Ubicacion de Negocio Pequeño" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zona" EntityType="Self.Zona" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Flujo Fijo_Usuario" Association="Self.FK_Flujo Fijo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Flujo Fijo" EntitySet="Flujo Fijo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flujo_Categoria" Association="Self.FK_Flujo_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Flujo" EntitySet="Flujo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flujo_Ubicacion de Negocio Pequeño" Association="Self.FK_Flujo_Ubicacion de Negocio Pequeño">
+            <End Role="Ubicacion de Negocio Pequeño" EntitySet="Ubicacion de Negocio Pequeño" />
+            <End Role="Flujo" EntitySet="Flujo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flujo_Usuario" Association="Self.FK_Flujo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Flujo" EntitySet="Flujo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Local_Empresa" Association="Self.FK_Local_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Local_Zona" Association="Self.FK_Local_Zona">
+            <End Role="Zona" EntitySet="Zona" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oferta_Producto" Association="Self.FK_Oferta_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Oferta" EntitySet="Oferta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oferta_Promocion" Association="Self.FK_Oferta_Promocion">
+            <End Role="Promocion" EntitySet="Promocion" />
+            <End Role="Oferta" EntitySet="Oferta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Categoria" Association="Self.FK_Producto_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Favorito_Producto" Association="Self.FK_Producto_Favorito_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Producto_Favorito" EntitySet="Producto_Favorito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Favorito_usuario" Association="Self.FK_Producto_Favorito_usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Producto_Favorito" EntitySet="Producto_Favorito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Local" Association="Self.FK_Producto_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promocion_Local" Association="Self.FK_Promocion_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Promocion" EntitySet="Promocion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EvoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="categoriaid" />
+          </Key>
+          <Property Name="categoriaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Flujo" Relationship="Self.FK_Flujo_Categoria" FromRole="Categoria" ToRole="Flujo" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Categoria" FromRole="Categoria" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="empresaid" />
+          </Key>
+          <Property Name="empresaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="razonsocial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUC" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="paginaweb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Local" Relationship="Self.FK_Local_Empresa" FromRole="Empresa" ToRole="Local" />
+        </EntityType>
+        <EntityType Name="Flujo">
+          <Key>
+            <PropertyRef Name="flujoid" />
+          </Key>
+          <Property Name="flujoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuarioid" Type="Int32" Nullable="false" />
+          <Property Name="monto" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="fechainicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechafin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="categoriaid" Type="Int32" Nullable="false" />
+          <Property Name="negocioid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_Flujo_Categoria" FromRole="Flujo" ToRole="Categoria" />
+          <NavigationProperty Name="Ubicacion_de_Negocio_Pequeño" Relationship="Self.FK_Flujo_Ubicacion_de_Negocio_Pequeño" FromRole="Flujo" ToRole="Ubicacion_de_Negocio_Pequeño" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Flujo_Usuario" FromRole="Flujo" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Flujo_Fijo">
+          <Key>
+            <PropertyRef Name="flujofijoid" />
+          </Key>
+          <Property Name="flujofijoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuarioid" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gasto" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="fechainicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechafin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Flujo_Fijo_Usuario" FromRole="Flujo_Fijo" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Local">
+          <Key>
+            <PropertyRef Name="localid" />
+          </Key>
+          <Property Name="localid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empresaid" Type="Int32" Nullable="false" />
+          <Property Name="zonaid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Local_Empresa" FromRole="Local" ToRole="Empresa" />
+          <NavigationProperty Name="Zona" Relationship="Self.FK_Local_Zona" FromRole="Local" ToRole="Zona" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Local" FromRole="Local" ToRole="Producto" />
+          <NavigationProperty Name="Promocion" Relationship="Self.FK_Promocion_Local" FromRole="Local" ToRole="Promocion" />
+        </EntityType>
+        <EntityType Name="Oferta">
+          <Key>
+            <PropertyRef Name="ofertaid" />
+          </Key>
+          <Property Name="ofertaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productoid" Type="Int32" Nullable="false" />
+          <Property Name="promocionid" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="descuento" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="monto" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Oferta_Producto" FromRole="Oferta" ToRole="Producto" />
+          <NavigationProperty Name="Promocion" Relationship="Self.FK_Oferta_Promocion" FromRole="Oferta" ToRole="Promocion" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="productoid" />
+          </Key>
+          <Property Name="productoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="localid" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="categoriaid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_Producto_Categoria" FromRole="Producto" ToRole="Categoria" />
+          <NavigationProperty Name="Local" Relationship="Self.FK_Producto_Local" FromRole="Producto" ToRole="Local" />
+          <NavigationProperty Name="Oferta" Relationship="Self.FK_Oferta_Producto" FromRole="Producto" ToRole="Oferta" />
+          <NavigationProperty Name="Producto_Favorito" Relationship="Self.FK_Producto_Favorito_Producto" FromRole="Producto" ToRole="Producto_Favorito" />
+        </EntityType>
+        <EntityType Name="Producto_Favorito">
+          <Key>
+            <PropertyRef Name="productofavoritoid" />
+          </Key>
+          <Property Name="productofavoritoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productoid" Type="Int32" Nullable="false" />
+          <Property Name="usuarioid" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Favorito_Producto" FromRole="Producto_Favorito" ToRole="Producto" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Producto_Favorito_usuario" FromRole="Producto_Favorito" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Promocion">
+          <Key>
+            <PropertyRef Name="promocionid" />
+          </Key>
+          <Property Name="promocionid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="localid" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechainicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechafin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Local" Relationship="Self.FK_Promocion_Local" FromRole="Promocion" ToRole="Local" />
+          <NavigationProperty Name="Oferta" Relationship="Self.FK_Oferta_Promocion" FromRole="Promocion" ToRole="Oferta" />
+        </EntityType>
+        <EntityType Name="Tips_Financieros">
+          <Key>
+            <PropertyRef Name="tipsid" />
+          </Key>
+          <Property Name="tipsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ubicacion_de_Negocio_Pequeño">
+          <Key>
+            <PropertyRef Name="negocioid" />
+          </Key>
+          <Property Name="negocioid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Flujo" Relationship="Self.FK_Flujo_Ubicacion_de_Negocio_Pequeño" FromRole="Ubicacion_de_Negocio_Pequeño" ToRole="Flujo" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usuarioid" />
+          </Key>
+          <Property Name="usuarioid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidopaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidomaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="celular" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="edad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Flujo" Relationship="Self.FK_Flujo_Usuario" FromRole="Usuario" ToRole="Flujo" />
+          <NavigationProperty Name="Flujo_Fijo" Relationship="Self.FK_Flujo_Fijo_Usuario" FromRole="Usuario" ToRole="Flujo_Fijo" />
+          <NavigationProperty Name="Producto_Favorito" Relationship="Self.FK_Producto_Favorito_usuario" FromRole="Usuario" ToRole="Producto_Favorito" />
+        </EntityType>
+        <EntityType Name="Zona">
+          <Key>
+            <PropertyRef Name="zonaid" />
+          </Key>
+          <Property Name="zonaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="distrito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Local" Relationship="Self.FK_Local_Zona" FromRole="Zona" ToRole="Local" />
+        </EntityType>
+        <Association Name="FK_Flujo_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Flujo" Type="Self.Flujo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="categoriaid" />
+            </Principal>
+            <Dependent Role="Flujo">
+              <PropertyRef Name="categoriaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="categoriaid" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="categoriaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Local_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="empresaid" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="empresaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flujo_Ubicacion_de_Negocio_Pequeño">
+          <End Role="Ubicacion_de_Negocio_Pequeño" Type="Self.Ubicacion_de_Negocio_Pequeño" Multiplicity="1" />
+          <End Role="Flujo" Type="Self.Flujo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion_de_Negocio_Pequeño">
+              <PropertyRef Name="negocioid" />
+            </Principal>
+            <Dependent Role="Flujo">
+              <PropertyRef Name="negocioid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flujo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Flujo" Type="Self.Flujo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usuarioid" />
+            </Principal>
+            <Dependent Role="Flujo">
+              <PropertyRef Name="usuarioid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Flujo_Fijo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Flujo_Fijo" Type="Self.Flujo_Fijo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usuarioid" />
+            </Principal>
+            <Dependent Role="Flujo_Fijo">
+              <PropertyRef Name="usuarioid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Local_Zona">
+          <End Role="Zona" Type="Self.Zona" Multiplicity="1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zona">
+              <PropertyRef Name="zonaid" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="zonaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="localid" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="localid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promocion_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="Promocion" Type="Self.Promocion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="localid" />
+            </Principal>
+            <Dependent Role="Promocion">
+              <PropertyRef Name="localid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oferta_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="productoid" />
+            </Principal>
+            <Dependent Role="Oferta">
+              <PropertyRef Name="productoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oferta_Promocion">
+          <End Role="Promocion" Type="Self.Promocion" Multiplicity="1" />
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promocion">
+              <PropertyRef Name="promocionid" />
+            </Principal>
+            <Dependent Role="Oferta">
+              <PropertyRef Name="promocionid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Favorito_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Producto_Favorito" Type="Self.Producto_Favorito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="productoid" />
+            </Principal>
+            <Dependent Role="Producto_Favorito">
+              <PropertyRef Name="productoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Favorito_usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Producto_Favorito" Type="Self.Producto_Favorito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usuarioid" />
+            </Principal>
+            <Dependent Role="Producto_Favorito">
+              <PropertyRef Name="usuarioid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EvoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Flujo" EntityType="Self.Flujo" />
+          <EntitySet Name="Flujo_Fijo" EntityType="Self.Flujo_Fijo" />
+          <EntitySet Name="Local" EntityType="Self.Local" />
+          <EntitySet Name="Oferta" EntityType="Self.Oferta" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Producto_Favorito" EntityType="Self.Producto_Favorito" />
+          <EntitySet Name="Promocion" EntityType="Self.Promocion" />
+          <EntitySet Name="Tips_Financieros" EntityType="Self.Tips_Financieros" />
+          <EntitySet Name="Ubicacion_de_Negocio_Pequeño" EntityType="Self.Ubicacion_de_Negocio_Pequeño" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="Zona" EntityType="Self.Zona" />
+          <AssociationSet Name="FK_Flujo_Categoria" Association="Self.FK_Flujo_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Flujo" EntitySet="Flujo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Categoria" Association="Self.FK_Producto_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Local_Empresa" Association="Self.FK_Local_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flujo_Ubicacion_de_Negocio_Pequeño" Association="Self.FK_Flujo_Ubicacion_de_Negocio_Pequeño">
+            <End Role="Ubicacion_de_Negocio_Pequeño" EntitySet="Ubicacion_de_Negocio_Pequeño" />
+            <End Role="Flujo" EntitySet="Flujo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flujo_Usuario" Association="Self.FK_Flujo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Flujo" EntitySet="Flujo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Flujo_Fijo_Usuario" Association="Self.FK_Flujo_Fijo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Flujo_Fijo" EntitySet="Flujo_Fijo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Local_Zona" Association="Self.FK_Local_Zona">
+            <End Role="Zona" EntitySet="Zona" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Local" Association="Self.FK_Producto_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promocion_Local" Association="Self.FK_Promocion_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Promocion" EntitySet="Promocion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oferta_Producto" Association="Self.FK_Oferta_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Oferta" EntitySet="Oferta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oferta_Promocion" Association="Self.FK_Oferta_Promocion">
+            <End Role="Promocion" EntitySet="Promocion" />
+            <End Role="Oferta" EntitySet="Oferta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Favorito_Producto" Association="Self.FK_Producto_Favorito_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Producto_Favorito" EntitySet="Producto_Favorito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Favorito_usuario" Association="Self.FK_Producto_Favorito_usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Producto_Favorito" EntitySet="Producto_Favorito" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EvoDBModelStoreContainer" CdmEntityContainer="EvoDBEntities">
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="EvoDBModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="categoriaid" ColumnName="categoriaid" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="EvoDBModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+                <ScalarProperty Name="razonsocial" ColumnName="razonsocial" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="paginaweb" ColumnName="paginaweb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flujo">
+            <EntityTypeMapping TypeName="EvoDBModel.Flujo">
+              <MappingFragment StoreEntitySet="Flujo">
+                <ScalarProperty Name="flujoid" ColumnName="flujoid" />
+                <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+                <ScalarProperty Name="fechafin" ColumnName="fechafin" />
+                <ScalarProperty Name="categoriaid" ColumnName="categoriaid" />
+                <ScalarProperty Name="negocioid" ColumnName="negocioid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flujo_Fijo">
+            <EntityTypeMapping TypeName="EvoDBModel.Flujo_Fijo">
+              <MappingFragment StoreEntitySet="Flujo Fijo">
+                <ScalarProperty Name="flujofijoid" ColumnName="flujofijoid" />
+                <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="gasto" ColumnName="gasto" />
+                <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+                <ScalarProperty Name="fechafin" ColumnName="fechafin" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Local">
+            <EntityTypeMapping TypeName="EvoDBModel.Local">
+              <MappingFragment StoreEntitySet="Local">
+                <ScalarProperty Name="localid" ColumnName="localid" />
+                <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+                <ScalarProperty Name="zonaid" ColumnName="zonaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oferta">
+            <EntityTypeMapping TypeName="EvoDBModel.Oferta">
+              <MappingFragment StoreEntitySet="Oferta">
+                <ScalarProperty Name="ofertaid" ColumnName="ofertaid" />
+                <ScalarProperty Name="productoid" ColumnName="productoid" />
+                <ScalarProperty Name="promocionid" ColumnName="promocionid" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="EvoDBModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="productoid" ColumnName="productoid" />
+                <ScalarProperty Name="localid" ColumnName="localid" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="categoriaid" ColumnName="categoriaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto_Favorito">
+            <EntityTypeMapping TypeName="EvoDBModel.Producto_Favorito">
+              <MappingFragment StoreEntitySet="Producto_Favorito">
+                <ScalarProperty Name="productofavoritoid" ColumnName="productofavoritoid" />
+                <ScalarProperty Name="productoid" ColumnName="productoid" />
+                <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promocion">
+            <EntityTypeMapping TypeName="EvoDBModel.Promocion">
+              <MappingFragment StoreEntitySet="Promocion">
+                <ScalarProperty Name="promocionid" ColumnName="promocionid" />
+                <ScalarProperty Name="localid" ColumnName="localid" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+                <ScalarProperty Name="fechafin" ColumnName="fechafin" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tips_Financieros">
+            <EntityTypeMapping TypeName="EvoDBModel.Tips_Financieros">
+              <MappingFragment StoreEntitySet="Tips Financieros">
+                <ScalarProperty Name="tipsid" ColumnName="tipsid" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ubicacion_de_Negocio_Pequeño">
+            <EntityTypeMapping TypeName="EvoDBModel.Ubicacion_de_Negocio_Pequeño">
+              <MappingFragment StoreEntitySet="Ubicacion de Negocio Pequeño">
+                <ScalarProperty Name="negocioid" ColumnName="negocioid" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="EvoDBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidopaterno" ColumnName="apellidopaterno" />
+                <ScalarProperty Name="apellidomaterno" ColumnName="apellidomaterno" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zona">
+            <EntityTypeMapping TypeName="EvoDBModel.Zona">
+              <MappingFragment StoreEntitySet="Zona">
+                <ScalarProperty Name="zonaid" ColumnName="zonaid" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="distrito" ColumnName="distrito" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

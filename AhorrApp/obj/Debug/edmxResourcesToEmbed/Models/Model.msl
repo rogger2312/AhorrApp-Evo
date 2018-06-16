@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EvoDBModelStoreContainer" CdmEntityContainer="EvoDBEntities">
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="EvoDBModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="categoriaid" ColumnName="categoriaid" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="EvoDBModel.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+          <ScalarProperty Name="razonsocial" ColumnName="razonsocial" />
+          <ScalarProperty Name="RUC" ColumnName="RUC" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="paginaweb" ColumnName="paginaweb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flujo">
+      <EntityTypeMapping TypeName="EvoDBModel.Flujo">
+        <MappingFragment StoreEntitySet="Flujo">
+          <ScalarProperty Name="flujoid" ColumnName="flujoid" />
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+          <ScalarProperty Name="fechafin" ColumnName="fechafin" />
+          <ScalarProperty Name="categoriaid" ColumnName="categoriaid" />
+          <ScalarProperty Name="negocioid" ColumnName="negocioid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flujo_Fijo">
+      <EntityTypeMapping TypeName="EvoDBModel.Flujo_Fijo">
+        <MappingFragment StoreEntitySet="Flujo Fijo">
+          <ScalarProperty Name="flujofijoid" ColumnName="flujofijoid" />
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="gasto" ColumnName="gasto" />
+          <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+          <ScalarProperty Name="fechafin" ColumnName="fechafin" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Local">
+      <EntityTypeMapping TypeName="EvoDBModel.Local">
+        <MappingFragment StoreEntitySet="Local">
+          <ScalarProperty Name="localid" ColumnName="localid" />
+          <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+          <ScalarProperty Name="zonaid" ColumnName="zonaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oferta">
+      <EntityTypeMapping TypeName="EvoDBModel.Oferta">
+        <MappingFragment StoreEntitySet="Oferta">
+          <ScalarProperty Name="ofertaid" ColumnName="ofertaid" />
+          <ScalarProperty Name="productoid" ColumnName="productoid" />
+          <ScalarProperty Name="promocionid" ColumnName="promocionid" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="EvoDBModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="productoid" ColumnName="productoid" />
+          <ScalarProperty Name="localid" ColumnName="localid" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="categoriaid" ColumnName="categoriaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto_Favorito">
+      <EntityTypeMapping TypeName="EvoDBModel.Producto_Favorito">
+        <MappingFragment StoreEntitySet="Producto_Favorito">
+          <ScalarProperty Name="productofavoritoid" ColumnName="productofavoritoid" />
+          <ScalarProperty Name="productoid" ColumnName="productoid" />
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Promocion">
+      <EntityTypeMapping TypeName="EvoDBModel.Promocion">
+        <MappingFragment StoreEntitySet="Promocion">
+          <ScalarProperty Name="promocionid" ColumnName="promocionid" />
+          <ScalarProperty Name="localid" ColumnName="localid" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+          <ScalarProperty Name="fechafin" ColumnName="fechafin" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tips_Financieros">
+      <EntityTypeMapping TypeName="EvoDBModel.Tips_Financieros">
+        <MappingFragment StoreEntitySet="Tips Financieros">
+          <ScalarProperty Name="tipsid" ColumnName="tipsid" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ubicacion_de_Negocio_Pequeño">
+      <EntityTypeMapping TypeName="EvoDBModel.Ubicacion_de_Negocio_Pequeño">
+        <MappingFragment StoreEntitySet="Ubicacion de Negocio Pequeño">
+          <ScalarProperty Name="negocioid" ColumnName="negocioid" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="distrito" ColumnName="distrito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="EvoDBModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellidopaterno" ColumnName="apellidopaterno" />
+          <ScalarProperty Name="apellidomaterno" ColumnName="apellidomaterno" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="edad" ColumnName="edad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zona">
+      <EntityTypeMapping TypeName="EvoDBModel.Zona">
+        <MappingFragment StoreEntitySet="Zona">
+          <ScalarProperty Name="zonaid" ColumnName="zonaid" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="distrito" ColumnName="distrito" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
