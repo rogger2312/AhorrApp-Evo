@@ -1,7 +1,8 @@
 ﻿@model AhorrApp.ViewModel.UsuarioViewModel
 @{
     ViewBag.Title = "Agregar";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutRegistro.cshtml";
+
 }
 
 
@@ -92,14 +93,14 @@
                             <div class="col-md-6 col-xs-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                    @Html.TextBoxFor(x => x.password, new { @class = "form-control" })
+                                    @Html.PasswordFor(x => x.password, new { @class = "form-control" })
                                 </div>
                                 @Html.ValidationMessageFor(x => x.password, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <button type="submit" class="btn btn-primary pull-right">Guardar Docente</button>
+                        <button type="submit" class="btn btn-primary pull-right">Registrarse</button>
                     </div>
                 </div>
             </form>

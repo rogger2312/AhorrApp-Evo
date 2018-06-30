@@ -1,15 +1,9 @@
-﻿
-@{
-    AhorrApp.Models.Usuario objusuario = (AhorrApp.Models.Usuario)AhorrApp.Security.SessionPersister.usuario;
-    String strnombre = String.Empty;
-
-    if (objusuario != null)
-    {
-        strnombre = objusuario.nombre;
-    }
+﻿@{
+    Layout = null;
 }
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <!-- META SECTION -->
@@ -23,54 +17,20 @@
     <!-- CSS INCLUDE -->
     <link rel="stylesheet" type="text/css" id="theme" href="@Url.Content("~/Content/css/theme-default.css")" />
     <!-- EOF CSS INCLUDE -->
-</head>
+    </head>
 <body>
-    <!-- START PAGE CONTAINER -->
-    <div class="page-container">
-        <!-- START PAGE SIDEBAR -->
-        <div class="page-sidebar">
-            <!-- START X-NAVIGATION -->
-            <ul class="x-navigation">
-                <li class="xn-logo">
-                    <a>Hola @strnombre</a>
-                    <a class="x-navigation-control"></a>
-                </li>
-                <li class="xn-title">Navigation</li>
-                <li>
-                    <a href="@Url.Action("Index", "Home")"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
-                </li>
-                <li class="xn-openable">
-                    <a><span class="fa fa-users"></span> <span class="xn-text">Opciones</span></a>
-                    <ul>
-                        <li><a href="@Url.Action("DatosPersonales", "Home")"><span class="fa fa-list"></span> Datos personales</a></li>
-                        <li><a href="@Url.Action("Index", "Home")"><span class="fa fa-plus"></span> Realizar un Flujo de dinero</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- END X-NAVIGATION -->
-        </div>
-        <!-- END PAGE SIDEBAR -->
+    <div class=" ">
         <!-- PAGE CONTENT -->
         <div class="page-content">
             <!-- START X-NAVIGATION VERTICAL -->
-            <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-                <!-- TOGGLE NAVIGATION -->
-                <li class="xn-icon-button">
-                    <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
-                </li>
 
-                <li class="xn-icon-button pull-right">
-                    <a href="@Url.Action("CerrarSesion", "Account")"><span class="fa fa-sign-out"></span></a>
-                </li>
-                <!-- END TOGGLE NAVIGATION -->
-            </ul>
             <!-- END X-NAVIGATION VERTICAL -->
             <!-- START BREADCRUMB -->
 
             <!-- END BREADCRUMB -->
 
             <div class="page-title">
-                <h2>Historial de Flujos</h2>
+                <h2><span class="fa fa-user"></span> Registro de usuario</h2>
             </div>
 
             <!-- PAGE CONTENT WRAPPER -->

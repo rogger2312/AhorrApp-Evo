@@ -6,12 +6,12 @@
 <html lang="en" class="body-full-height">
 <head>
     <!-- META SECTION -->
-    <title>Joli Admin - Responsive Bootstrap Admin Template</title>
+    <title>Ahorrapp</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="icon" href="@Url.Content("~/Content/img/favicon.ico")" type="image/x-icon" />
+    <link rel="icon" href="@Url.Content("~/Content/img/ahorrapp.ico")" type="image/x-icon" />
     <!-- END META SECTION -->
     <!-- CSS INCLUDE -->
     <link rel="stylesheet" type="text/css" id="theme" href="@Url.Content("~/Content/css/theme-default.css")" />
@@ -22,9 +22,10 @@
     <div class="login-container">
 
         <div class="login-box animated fadeInDown">
-            <div class="login-logo"></div>
+         
+          
             <div class="login-body">
-                <div class="login-title"><strong>Welcome</strong>, Please login</div>
+                <div class="login-title"><strong>Bienvenido a Ahorrapp</strong>, Porfavor ingrese sus credenciales</div>
                 @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
                 {
                     <div class="form-group">
@@ -49,7 +50,7 @@
             </div>
             <div class="login-footer">
                 <div class="pull-left">
-                    &copy; 2014 AppName
+                    &copy; 2018 Ahorrapp
                 </div>
                 <div class="pull-right">
                     <li>@Html.ActionLink("Registrarse", "Agregar", "Registro")</li>

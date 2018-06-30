@@ -1,0 +1,56 @@
+﻿@model AhorrApp.ViewModel.DatosPersonalesViewModel
+@{
+    AhorrApp.Models.Usuario objusuario = (AhorrApp.Models.Usuario)AhorrApp.Security.SessionPersister.usuario;
+    String strnombre = String.Empty;
+    String strapellidopaterno = String.Empty;
+    String strapellidomaterno = String.Empty;
+    String strdni = String.Empty;
+    String strcelular = String.Empty;
+    int ntEdad = 0;
+    String strlogin = String.Empty;
+    String strpassword = String.Empty;
+
+    if (objusuario != null)
+    {
+        strnombre = objusuario.nombre;
+        strapellidopaterno = objusuario.apellidopaterno;
+        strapellidomaterno = objusuario.apellidomaterno;
+        strdni = objusuario.DNI;
+        strcelular = objusuario.celular;
+        ntEdad = objusuario.edad;
+        strlogin = objusuario.login;
+        strpassword = objusuario.password;
+    }
+    ViewBag.Title = "DatosPersonales";
+    Layout = "~/Views/Shared/_LayoutDatos.cshtml";
+
+}
+
+
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    
+                      
+                        <div class="col-md-6 col-xs-12">
+                          <p><label>Nombre: @strnombre</label></p>
+                            <p><label>Apellido Paterno: @strapellidopaterno</label></p>
+                            <p><label>Apellido Materno: @strapellidomaterno</label></p>
+                            <p><label>DNI: @strdni</label></p>
+                            <p><label>Celular: @strcelular</label></p>
+                            <p><label>Edad: @ntEdad</label></p>
+                            <p><label>Login: @strlogin</label></p>
+                            <p><label>Password: @strpassword</label></p>
+                        </div>
+               
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

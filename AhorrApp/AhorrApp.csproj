@@ -262,6 +262,7 @@
     <Compile Include="Security\CustomPrincipal.cs" />
     <Compile Include="Security\SessionPersister.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\DatosPersonalesViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\UsuarioViewModel.cs" />
   </ItemGroup>
@@ -530,6 +531,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\AccessDenied.cshtml" />
     <Content Include="Views\Registro\Agregar.cshtml" />
+    <Content Include="Views\Shared\_LayoutRegistro.cshtml" />
+    <Content Include="Views\Home\DatosPersonales.cshtml" />
+    <Content Include="Views\Shared\_LayoutDatos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -543,6 +547,7 @@
     <Folder Include="Content\assets\uploads\Welcome\folder 4\" />
     <Folder Include="Content\assets\uploads\Welcome\folder 5\" />
     <Folder Include="Content\js\plugins\" />
+    <Folder Include="Views\Datos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
